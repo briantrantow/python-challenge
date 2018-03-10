@@ -8,7 +8,6 @@ datescolumn = []
 revenuescolumn = []
 monthly_revenue_change = []
 
-
 with open(Budget_data_csv, newline="") as csvfile:
     budgetreader = csv.reader(csvfile, delimiter=",")
     
@@ -52,3 +51,29 @@ print("Total Revenue: $" + str(Total_Revenue))
 print("Average Revenue Change: $" + str(Av_Rev_Change))
 print("Greatest Increase in Revenue: " + maxdate + " ($" + str(lrg_incr_rev) + ")")
 print("Greatest Increase in Revenue: " + mindate + " ($" + str(lrg_decr_rev) + ")")
+
+# create output lines
+msg_total_months = "Total Months: " + str(Total_Months)
+msg_total_revenue = "Total Revenue: $" + str(Total_Revenue)
+msg_av_rev_change = "Average Revenue Change: $" + str(Av_Rev_Change)
+msg_lrg_incr_rev = "Greatest Increase in Revenue: " + maxdate + " ($" + str(lrg_incr_rev) + ")"
+msg_lrg_decr_rev = "Greatest Increase in Revenue: " + mindate + " ($" + str(lrg_decr_rev) + ")"
+
+
+full_analysis = ["Financial Analysis", 
+                "--------------------",
+                msg_total_months,  
+                msg_total_revenue,
+                msg_av_rev_change,
+                msg_lrg_incr_rev,
+                msg_lrg_decr_rev
+                ]             
+
+# write output file
+with open("output.txt", "w") as output:
+
+    for i in full_analysis:
+
+        output.write(str(i) + '\n')
+
+output.close()
